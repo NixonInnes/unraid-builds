@@ -44,10 +44,5 @@ c.Spawner.default_url = '/lab'\n\
 c.Authenticator.admin_users = {'$user'}\n\
 " >> jupyterhub_config.py
 
-# Copy boot script
-WORKDIR /opt/jupyterhub
-COPY boot.sh ./
-RUN chmod +x boot.sh
-
 EXPOSE 8000
 CMD $VENV/bin/jupyterhub --config $VENV/etc/jupyterhub/jupyterhub_config.py
