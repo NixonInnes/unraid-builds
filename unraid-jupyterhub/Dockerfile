@@ -45,4 +45,4 @@ c.Authenticator.admin_users = {'$user'}\n\
 " >> jupyterhub_config.py
 
 EXPOSE 8000
-CMD $VENV/bin/jupyterhub --config $VENV/etc/jupyterhub/jupyterhub_config.py
+CMD $VENV/bin/jupyterhub
