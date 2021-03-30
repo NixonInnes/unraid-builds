@@ -1,4 +1,4 @@
-![banner](https://raw.githubusercontent.com/NixonInnes/img/main/banner-sm.png =800x)
+![banner](https://raw.githubusercontent.com/NixonInnes/img/main/banner-sm.png)
 
 # Unraid Builds
 This repository contains a collection of Docker & [Unraid](https://www.unraid.net/) builds, made for running on a homelab setup.
