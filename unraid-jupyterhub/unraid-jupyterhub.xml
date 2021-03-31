@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>unraid-jupyterhub</Name>
+  <Repository>nixoninnes/unraid-jupyterhub</Repository>
+  <Registry>https://hub.docker.com/r/nixoninnes/unraid-jupyterhub</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project>https://github.com/NixonInnes/unraid-builds</Project>
+  <Overview>JupyterHub is a multi-user version of the Jupyter notebook server designed for companies, classrooms and research labs.&#xD;
+https://jupyter.org/hub&#xD;
+---&#xD;
+This build pulls the latest Ubuntu container and sets up JupyterHub with primarily default settings. It also includes creating an administrative user for JupyterHub, which can be configured within the advanced view of the Unraid container settings. (Defaults: uname: admin, pwd: jupyter)&#xD;
+The container is also configured to use a global folder as the notebooks folder, to easily allow this to be mapped to an Unraid share. This can be configured within the Unraid container settings. (Defaults: /mnt/user/development/notebooks).</Overview>
+  <Category>Productivity: Tools: Network:Web Status:Beta</Category>
+  <WebUI>http://[IP]:[PORT]</WebUI>
+  <TemplateURL/>
+  <Icon>https://raw.githubusercontent.com/NixonInnes/unraid-builds/master/unraid-jupyterhub/logo.jpg</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1617154841</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Description>JupyterHub is a multi-user version of the Jupyter notebook server designed for companies, classrooms and research labs.&#xD;
+https://jupyter.org/hub&#xD;
+---&#xD;
+This build pulls the latest Ubuntu container and sets up JupyterHub with primarily default settings. It also includes creating an administrative user for JupyterHub, which can be configured within the advanced view of the Unraid container settings. (Defaults: uname: admin, pwd: jupyter)&#xD;
+The container is also configured to use a global folder as the notebooks folder, to easily allow this to be mapped to an Unraid share. This can be configured within the Unraid container settings. (Defaults: /mnt/user/development/notebooks).</Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>8000</HostPort>
+        <ContainerPort>8000</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/development/notebooks/</HostDir>
+      <ContainerDir>/data/notebooks</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Value/>
+      <Name>user</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value/>
+      <Name>pwd</Name>
+      <Mode/>
+    </Variable>
+  </Environment>
+  <Labels/>
+  <Config Name="Web port" Target="8000" Default="8000" Mode="tcp" Description="Web server port" Type="Port" Display="always" Required="false" Mask="false">8000</Config>
+  <Config Name="Notebooks folder" Target="/data/notebooks" Default="/mnt/user/appdata/jupyterhub" Mode="rw" Description="Share to store notebooks" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/development/notebooks/</Config>
+  <Config Name="Admin username" Target="user" Default="admin" Mode="" Description="Administrator username (default: admin)" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Admin password" Target="pwd" Default="jupyter" Mode="" Description="Administrator password (default: jupyter)" Type="Variable" Display="advanced" Required="false" Mask="true"/>
+</Container>
