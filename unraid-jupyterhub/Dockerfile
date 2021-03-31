@@ -37,10 +37,15 @@ RUN mkdir -p /opt/jupyterhub/etc/jupyterhub
 WORKDIR /opt/jupyterhub/etc/jupyterhub
 RUN $VENV/bin/jupyterhub --generate-config
 
+# Create notebooks directory
+RUN mkdir -p /data/notebooks
+RUN chmod 777 /data/notebooks
+
 # Append options to config
 RUN echo "\
 c.JupyterHub.hub_bind_url = 'http://localhost:8080'\n\
 c.Spawner.default_url = '/lab'\n\
+c.Spawner.notebook_dir = '/data/notebooks'\n\
 c.Authenticator.admin_users = {'$user'}\n\
 " >> jupyterhub_config.py
 
