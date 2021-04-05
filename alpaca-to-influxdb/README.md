@@ -2,7 +2,12 @@
 Alpaca to Influx is a container designed to be run on an [Unraid](https://www.unraid.net/) server via Docker. The purpose of the container is to simplify the ingestion of stock market data, provided by the [Alpaca API](https://alpaca.markets/), into your own [Influx database](https://www.influxdata.com/).  
 The container collects the 1m candles (klines) for each of the configured market tickers. 
 
-__TOC__
+## Contents
+- [Prerequisites](#prerequisites)
+- [Data](#data)
+- [Configuration](#configuration)
+  * [Config File](#config-file)
+  * [Environment Variables](#environment-variables)
 
 # Prerequisites
  - Alpaca account & API key
@@ -34,7 +39,8 @@ The container collects the 1m candles from the Alpaca API, for the configured ti
 # Configuration
 A configuration file is stored within the container at `/config/config.yaml`. If no configuration is found when the container is launched, a sample configuration shall be created. In addition to the configuration file, environment variables for `ALPACA_ID`, `ALPACA_KEY` and `INFLUX_TOKEN` need to be specified. More detail for each is provided in the following sections:
 
-## Config File (`/config/config.yaml`)
+## Config File
+`/config/config.yaml`  
 The configuration file should be similar to below:
 ```yaml
 influx:
