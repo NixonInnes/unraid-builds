@@ -1,28 +1,13 @@
 influx:
   url: http://influxdb.nixserver.io
-  org: EchoNet-Test
+  org: Test
   bucket: testing
   batch_size: 50
   interval: 10
 streams:
-  ADAUSDT-1m:
-    symbol: adausdt
-    interval: 1m
   BTCUSDT-1m:
     symbol: btcusdt
     interval: 1m
   ETHUSDT-1m:
     symbol: ethusdt
-    interval: 1m
-  BNBUSDT-1m:
-    symbol: bnbusdt
-    interval: 1m
-  DOTUSDT-1m:
-    symbol: dotusdt
-    interval: 1m
-  XRPUSDT-1m:
-    symbol: xrpusdt
-    interval: 1m
-  LTCUSDT-1m:
-    symbol: ltcusdt
     interval: 1m
