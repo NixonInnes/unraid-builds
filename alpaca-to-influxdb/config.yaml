@@ -1,0 +1,26 @@
+influx:
+  url: http://influxdb.nixserver.io
+  org: EchoNet
+  bucket: testing
+  batch_size: 50
+  interval: 10
+alpaca:
+  account-type: free
+tickers:
+  - AMD
+  - AAL
+  - AAPL
+  - BP
+  - GME
+  - GE
+  - INTC
+  - JNJ
+  - MSFT
+  - NVDA
+  - PLTR
+  - QCOM
+  - RTX
+  - RDS-A
+  - SNOW
+  - TSLA
+  - UBER

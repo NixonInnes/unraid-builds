@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>binance-ingester</Name>
+  <Repository>nixserver.io:5000/nixoninnes/binance-ingester:latest</Repository>
+  <Registry/>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <Overview>Binance-Ingester is a tool for reading market data from the Binance websockets for a defined set of markets and writing them to an Influx database.</Overview>
+  <Category>Downloaders: Tools:</Category>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1617491720</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Description>Binance-Ingester is a tool for reading market data from the Binance websockets for a defined set of markets and writing them to an Influx database.</Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish/>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/binance-ingester</HostDir>
+      <ContainerDir>/config</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Value/>
+      <Name>INFLUXDB_TOKEN</Name>
+      <Mode/>
+    </Variable>
+  </Environment>
+  <Labels/>
+  <Config Name="Config" Target="/config" Default="/mnt/user/appdata/binance-ingester" Mode="rw" Description="Container Path: /config" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/binance-ingester</Config>
+  <Config Name="InfluxDB Token" Target="INFLUXDB_TOKEN" Default="" Mode="" Description="Influx database access token" Type="Variable" Display="always" Required="true" Mask="false"/>
+</Container>

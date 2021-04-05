@@ -6,10 +6,16 @@ Please see list below, and refer to the respective image READMEs for more inform
 
 ---
 
-### [JupyterHub](unraid-jupyterhub/README.md)
-> https://jupyter.org/hub
+### [Alpaca  to InfluxDB](alpaca-to-influxdb/README.md)
+> https://https://alpaca.markets/
 
-_JupyterHub runs in the cloud or on your own hardware, and makes it possible to serve a pre-configured data science environment to any user in the world. It is customizable and scalable, and is suitable for small and large teams, academic courses, and large-scale infrastructure._
+_Alpaca is an API for stock trading, providing real-time data of market prices. The `alpaca-to-influx` container simplifies pulling the live market data into your own InfluxDB._
+
+
+### [Binance  to InfluxDB](binance-to-influxdb/README.md)
+> https://https://www.binance.com/
+
+_Binance is one of the largest cryptocurrency exchanges, providing real-time data of crypto prices. The `binance-to-influx` container simplifies pulling the live market data into your own InfluxDB._
 
 
 ---
