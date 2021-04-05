@@ -2,7 +2,7 @@
 Alpaca to Influx is a container designed to be run on an [Unraid](https://www.unraid.net/) server via Docker. The purpose of the container is to simplify the ingestion of stock market data, provided by the [Alpaca API](https://alpaca.markets/), into your own [Influx database](https://www.influxdata.com/).  
 The container collects the 1m candles (klines) for each of the configured market tickers. 
 
-[_TOC_]
+__TOC__
 
 # Prerequisites
  - Alpaca account & API key

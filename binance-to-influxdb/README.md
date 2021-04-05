@@ -2,7 +2,7 @@
 Binance to Influx is a container designed to be run on an [Unraid](https://www.unraid.net/) server via Docker. The purpose of the container is to simplify the ingestion of cryptocurrency market data, provided by the [Binance API](https://binance.com/), into your own [Influx database](https://www.influxdata.com/).  
 The container collects the candles (klines) for each of the configured crypto symbols (e.g. BTCUSDT). 
 
-[_TOC_]
+__TOC__
 
 # Prerequisites
  - InfluxDB setup & token
