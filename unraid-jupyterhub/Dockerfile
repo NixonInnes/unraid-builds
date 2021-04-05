@@ -1,14 +1,21 @@
 from ubuntu:latest
 
-ARG DEBIAN_FRONTEND=noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 # Do updates
 RUN apt-get update && apt-get upgrade -y
-RUN ACCEPT_EULA=Y apt-get install -y python3-venv nodejs npm git
+RUN ACCEPT_EULA=Y apt-get install -y python3-venv nodejs npm
 
-# Set default arguments for the default user
+# Set default arguments for the default user & password
 # which are overwritten by environment variables, if set
-ENV user=admin
+ARG default_user=admin
+ENV user=$default_user
+ARG default_pwd=jupyter
+ENV pwd=$default_pwd
+
+# Create the default user
+RUN useradd --create-home -s /bin/bash $user \
+        && echo $user:$pwd | chpasswd
 
 # Create a virtual environment in /opt/jupyterhub
 ENV VENV /opt/jupyterhub
@@ -16,21 +23,18 @@ RUN python3 -m venv $VENV
 ENV PATH "$VENV/bin:$PATH"
 
 # Update python core packages
-WORKDIR $VENV
 RUN python -m pip install -U pip
 RUN pip install setuptools wheel
 
 # Install jupyter packages
-RUN pip install jupyterhub jupyterlab ipywidgets jupyterhub-systemdspawner
-RUN git clone https://github.com/jupyterhub/nativeauthenticator.git
-RUN pip install -e nativeauthenticator/
+RUN pip install jupyterhub jupyterlab ipywidgets
 
 # Install configurable http proxy
 RUN npm install -g configurable-http-proxy
 
 # Create the config file
-RUN mkdir -p $VENV/etc/jupyterhub
-WORKDIR $VENV/etc/jupyterhub
+RUN mkdir -p /opt/jupyterhub/etc/jupyterhub
+WORKDIR /opt/jupyterhub/etc/jupyterhub
 RUN $VENV/bin/jupyterhub --generate-config
 
 # Create notebooks directory
@@ -40,14 +44,10 @@ RUN chmod 777 /data/notebooks
 # Append options to config
 RUN echo "\
 c.JupyterHub.hub_bind_url = 'http://localhost:8080'\n\
-c.JupyterHub.spawner_class = 'systemdspawner.SystemdSpawner'\n\
-c.SystemdSpawner.dynamic_users = True\n\
-c.SystemdSpawner.user_workingdir = '/data/notebooks'\n\
-c.JupyterHub.authenticator_class = 'nativeauthenticator.NativeAuthenticator'\n\
+c.Spawner.default_url = '/lab'\n\
+c.Spawner.notebook_dir = '/data/notebooks'\n\
+c.Authenticator.admin_users = {'$user'}\n\
 " >> jupyterhub_config.py
 
-WORKDIR $VENV
-COPY boot.sh /opt/
-
 EXPOSE 8000
-ENTRYPOINT ["/opt/boot.sh"]
+CMD $VENV/bin/jupyterhub
