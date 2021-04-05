@@ -2,13 +2,13 @@
 Alpaca to Influx is a container designed to be run on an [Unraid](https://www.unraid.net/) server via Docker. The purpose of the container is to simplify the ingestion of stock market data, provided by the [Alpaca API](https://alpaca.markets/), into your own [Influx database](https://www.influxdata.com/).  
 The container collects the 1m candles (klines) for each of the configured market tickers. 
 
-[[_TOC_]]
+[_TOC_]
 
 # Prerequisites
  - Alpaca account & API key
  - InfluxDB setup & token
 
->**NOTE**
+>**NOTE**  
 >A free Alpaca account and paper trading API key will work just fine.
 
 # Data
@@ -58,7 +58,7 @@ The parameters within the configuration file are as defined:
  - `interval` - Maximum interval (in seconds) before a batch is written to the Influx database (for more information, see [Batching](#Batching))
 
 #### Batching
-Data from the Alpaca API is not written directly to the Influx database. Data points are batched together and written simultaneously to reduce the number of interactions with the database.  
+Data from the Alpaca API is not written directly to the Influx database. Data points are batched together and written simultaneously to reduce the number of interactions with the database. The configuration allows for defining the maximum size the batch before writing to the Influx database (`batch_size`) and the maximum time before a batch is written to the Influx database (`interval`).  
 The container collects 1 data point, per ticker, per minute. 
 
 ### alpaca:
@@ -75,5 +75,5 @@ Three environment variables need to be defined in the container, these are as fo
 
 If you are installing the container on your Unraid server, these are set in the configuration page of the app.
 
->**NOTE**
+>**NOTE**  
 >You obtain your Alpaca API key by visiting the Live Trading page (paper accounts are fine), and creating an API Key in the right-hand menu (as of time of writing).

@@ -2,7 +2,7 @@
 Binance to Influx is a container designed to be run on an [Unraid](https://www.unraid.net/) server via Docker. The purpose of the container is to simplify the ingestion of cryptocurrency market data, provided by the [Binance API](https://binance.com/), into your own [Influx database](https://www.influxdata.com/).  
 The container collects the candles (klines) for each of the configured crypto symbols (e.g. BTCUSDT). 
 
-[[_TOC_]]
+[_TOC_]
 
 # Prerequisites
  - InfluxDB setup & token
@@ -53,7 +53,7 @@ The parameters within the configuration file are as defined:
  - `interval` - Maximum interval (in seconds) before a batch is written to the Influx database (for more information, see [Batching](#Batching))
 
 #### Batching
-Data from the Binance API is not written directly to the Influx database. Data points are batched together and written simultaneously to reduce the number of interactions with the database.  
+Data from the Binance API is not written directly to the Influx database. Data points are batched together and written simultaneously to reduce the number of interactions with the database. The configuration allows for defining the maximum size the batch before writing to the Influx database (`batch_size`) and the maximum time before a batch is written to the Influx database (`interval`).    
 The container collects 1 data point, per symbol, every 2 seconds.
 
 ### streams:
@@ -64,7 +64,7 @@ This is a definition of the symbols and their intervals which you wish to collec
     interval: <candle interval>
 ```
 
->**NOTE**
+>**NOTE**  
 >The `interval` can be defined as any of the following: _1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h, 8h, 12h, 1d, 3d, 1w or 1M_
 
 ## Environment Variables
