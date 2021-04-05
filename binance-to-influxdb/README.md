@@ -2,7 +2,12 @@
 Binance to Influx is a container designed to be run on an [Unraid](https://www.unraid.net/) server via Docker. The purpose of the container is to simplify the ingestion of cryptocurrency market data, provided by the [Binance API](https://binance.com/), into your own [Influx database](https://www.influxdata.com/).  
 The container collects the candles (klines) for each of the configured crypto symbols (e.g. BTCUSDT). 
 
-__TOC__
+## Contents
+- [Prerequisites](#prerequisites)
+- [Data](#data)
+- [Configuration](#configuration)
+  * [Config File](#config-file)
+  * [Environment Variables](#environment-variables)
 
 # Prerequisites
  - InfluxDB setup & token
@@ -27,7 +32,8 @@ The container collects candle data from the Binance API, for the configured symb
 # Configuration
 A configuration file is stored within the container at `/config/config.yaml`. If no configuration is found when the container is launched, a sample configuration shall be created. In addition to the configuration file, an environment variable for your `INFLUX_TOKEN` needs to be specified. More detail for each is provided in the following sections:
 
-## Config File (`/config/config.yaml`)
+## Config File 
+`/config/config.yaml`  
 The configuration file should be similar to below:
 ```yaml
 influx:
@@ -45,7 +51,7 @@ streams:
     interval: 1m
 ```
 The parameters within the configuration file are as defined:  
-### influx:
+### influx
  - `url` - The URL address of your Influx database
  - `org` - The name of the organisation within your InfluxDB associated with the specified token (see: # Environment Variables)
  - `bucket` - The name of the bucked within your defined InfluxDB organisation
@@ -56,7 +62,7 @@ The parameters within the configuration file are as defined:
 Data from the Binance API is not written directly to the Influx database. Data points are batched together and written simultaneously to reduce the number of interactions with the database. The configuration allows for defining the maximum size the batch before writing to the Influx database (`batch_size`) and the maximum time before a batch is written to the Influx database (`interval`).    
 The container collects 1 data point, per symbol, every 2 seconds.
 
-### streams:
+### streams
 This is a definition of the symbols and their intervals which you wish to collect the market data for. The format for defining them is as follows:
 ```
   <measurement name>:
