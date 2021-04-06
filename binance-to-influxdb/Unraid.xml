@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
-  <Name>binance-ingester</Name>
-  <Repository>nixserver.io:5000/nixoninnes/binance-ingester:latest</Repository>
+  <Name>binance-to-influxdb</Name>
+  <Repository>nixoninnes/binance-to-influxdb:latest</Repository>
   <Registry/>
   <Network>bridge</Network>
   <MyIP/>
@@ -9,7 +9,8 @@
   <Privileged>false</Privileged>
   <Support/>
   <Project/>
-  <Overview>Binance-Ingester is a tool for reading market data from the Binance websockets for a defined set of markets and writing them to an Influx database.</Overview>
+  <Overview>Binance to Influx is a container designed to be run on an [Unraid](https://www.unraid.net/) server via Docker. The purpose of the container is to simplify the ingestion of cryptocurrency market data, provided by the [Binance API](https://binance.com/), into your own [Influx database](https://www.influxdata.com/).  &#xD;
+The container collects the candles (klines) for each of the configured crypto symbols (e.g. BTCUSDT). </Overview>
   <Category>Downloaders: Tools:</Category>
   <WebUI/>
   <TemplateURL/>
@@ -17,17 +18,18 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <DateInstalled>1617491720</DateInstalled>
+  <DateInstalled>1617668200</DateInstalled>
   <DonateText/>
   <DonateLink/>
-  <Description>Binance-Ingester is a tool for reading market data from the Binance websockets for a defined set of markets and writing them to an Influx database.</Description>
+  <Description>Binance to Influx is a container designed to be run on an [Unraid](https://www.unraid.net/) server via Docker. The purpose of the container is to simplify the ingestion of cryptocurrency market data, provided by the [Binance API](https://binance.com/), into your own [Influx database](https://www.influxdata.com/).  &#xD;
+The container collects the candles (klines) for each of the configured crypto symbols (e.g. BTCUSDT). </Description>
   <Networking>
     <Mode>bridge</Mode>
     <Publish/>
   </Networking>
   <Data>
     <Volume>
-      <HostDir>/mnt/user/appdata/binance-ingester</HostDir>
+      <HostDir>/mnt/user/appdata/binance-to-influxdb</HostDir>
       <ContainerDir>/config</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
@@ -40,6 +42,6 @@
     </Variable>
   </Environment>
   <Labels/>
-  <Config Name="Config" Target="/config" Default="/mnt/user/appdata/binance-ingester" Mode="rw" Description="Container Path: /config" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/binance-ingester</Config>
+  <Config Name="Config" Target="/config" Default="/mnt/user/appdata/binance-ingester" Mode="rw" Description="Container Path: /config" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/binance-to-influxdb</Config>
   <Config Name="InfluxDB Token" Target="INFLUXDB_TOKEN" Default="" Mode="" Description="Influx database access token" Type="Variable" Display="always" Required="true" Mask="false"/>
 </Container>

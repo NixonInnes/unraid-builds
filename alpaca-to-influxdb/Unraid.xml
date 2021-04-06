@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>alpaca-to-influxdb</Name>
+  <Repository>nixoninnes/alpaca-to-influxdb:latest</Repository>
+  <Registry>https://hub.docker.com/r/nixoninnes/binance-to-influxdb</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <Overview>Alpaca to Influx is a container designed to be run on an [Unraid](https://www.unraid.net/) server via Docker. The purpose of the container is to simplify the ingestion of stock market data, provided by the [Alpaca API](https://alpaca.markets/), into your own [Influx database](https://www.influxdata.com/).  &#xD;
+The container collects the 1m candles (klines) for each of the configured market tickers.</Overview>
+  <Category>Downloaders: Tools:</Category>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1617667168</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Description>Alpaca to Influx is a container designed to be run on an [Unraid](https://www.unraid.net/) server via Docker. The purpose of the container is to simplify the ingestion of stock market data, provided by the [Alpaca API](https://alpaca.markets/), into your own [Influx database](https://www.influxdata.com/).  &#xD;
+The container collects the 1m candles (klines) for each of the configured market tickers.</Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish/>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/alpaca-to-influxdb</HostDir>
+      <ContainerDir>/config</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Value/>
+      <Name>ALPACA_ID</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value/>
+      <Name>ALPACA_KEY</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value/>
+      <Name>INFLUX_TOKEN</Name>
+      <Mode/>
+    </Variable>
+  </Environment>
+  <Labels/>
+  <Config Name="Config" Target="/config" Default="/mnt/user/appdata/alpaca-to-influxdb" Mode="rw" Description="Container Path: /config" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/alpaca-to-influxdb</Config>
+  <Config Name="Alpaca API Key ID" Target="ALPACA_ID" Default="" Mode="" Description="Container Variable: ALPACA_ID" Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="Alpaca API Key Secret" Target="ALPACA_KEY" Default="" Mode="" Description="Container Variable: ALPACA_KEY" Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="InfluxDB Token" Target="INFLUX_TOKEN" Default="" Mode="" Description="Container Variable: INFLUX_TOKEN" Type="Variable" Display="always" Required="true" Mask="false"/>
+</Container>
